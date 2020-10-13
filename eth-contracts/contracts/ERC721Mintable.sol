@@ -7,6 +7,17 @@ import 'openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol';
 import "./Oraclize.sol";
 
 contract Ownable {
+
+    address private _owner;
+    event TransferOwnership(address _newOwner);
+    constructor() {
+        _owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(_owner == msg.sender, "Call not made by Owner");
+        _;
+    }
     //  TODO's
     //  1) create a private '_owner' variable of type address with a public getter function
     //  2) create an internal constructor that sets the _owner var to the creater of the contract 
@@ -17,8 +28,43 @@ contract Ownable {
     function transferOwnership(address newOwner) public onlyOwner {
         // TODO add functionality to transfer control of the contract to a newOwner.
         // make sure the new owner is a real address
-
+        require(newOwner != address(0), "Address is not valid");
+        _owner = newOwner;
+        emit TransferOwnership(newOwner);
     }
+}
+
+contract Pausable is Ownable{
+
+    bool _paused private;
+
+    event Paused(address executor);
+    event Unpaused(address executor);
+
+    constructor() {
+        _paused = false;
+    }
+
+    modifier Paused() {
+        require(_paused, "Smart Contract is not paused");
+        _;
+    }
+
+    modifier whenNotPaused() {
+        require(!_paused, "The smart contract is paused");
+        _;
+    }
+
+    function setPause(bool isPaused) onlyOwner{
+        _paused = isPaused;
+        if(_paused) {
+            emit Paused(msg.sender);
+        }
+        else {
+            emit Unpaused(msg.sender);
+        }
+    }
+
 }
 
 //  TODO's: Create a Pausable contract that inherits from the Ownable contract
