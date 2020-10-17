@@ -8,12 +8,9 @@ contract _Verifier is Verifier {}
 
 
 // TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
-contract SolnSquareVerifier is CustomERC721Token {
-
-    _Verifier public verifier;
+contract SolnSquareVerifier is CustomERC721Token, _Verifier {
 
     constructor(address _verifierAddress) CustomERC721Token("MxRE", "mre") public {
-        verifier = _Verifier(_verifierAddress);
     }
     // TODO define a solutions struct that can hold an index & an address
         struct Solution {
@@ -49,16 +46,16 @@ contract SolnSquareVerifier is CustomERC721Token {
     //  - make sure the solution is unique (has not been used before)
     //  - make sure you handle metadata as well as tokenSuplly
 
-    function mint(
+    function mintToken(
         address _to, 
         uint256 _tokenId, 
         uint[2] memory a,
-        uint[2] memory c, 
         uint[2][2] memory b, 
+        uint[2] memory c, 
         uint[2] memory input) public {
 
             bytes32 _key = getKey(a,b,c,input);
-            require(verifier.verifyTx(a,b,c,input), "Solution is wrong. Try again.");
+            require(super.verifyTx(a,b,c,input), "Solution is wrong. Try again.");
             require(submitedSolutions[_key] == address(0), "Solution already exist");
             calculateSolution(_tokenId, _to, _key);
             super.mint(_to, _tokenId);
