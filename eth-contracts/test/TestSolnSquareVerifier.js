@@ -19,7 +19,7 @@ it('Adding solution to SolnSquareContract', async () => {
     let _result;
     const SolnSquareContract = await SolnSquareVerifier.deployed()
     let key = await SolnSquareContract.getKey.call(
-        proof.a, proof.b, proof.c, [3, 9]);
+        proof.a, proof.b, proof.c, [9, 3]);
     let resultSolution = await SolnSquareContract.calculateSolution(10, user2, key)
     truffleAssert.eventEmitted(resultSolution, "AddedSolution", (ev)=>{
         _result = ev.index.toNumber() === 10;
