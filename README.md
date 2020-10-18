@@ -20,7 +20,7 @@ Verifier: 0xE95352a83b9799fBe69C14e1e794601AEc7D1b81
 SolnSquareVerifier: 0xD0d72096e35e09DAeFf92c25327FB14F40fC1B65
 ```
 
-## Minting
+## Minting and buying
 ```bash
 cd Blockchain-Capstone/app/
 npm start
@@ -41,6 +41,19 @@ Tx hash from token (1-10):
 0x06c4078b783dd14f7dd54d6e48aea4c1106fa786a7fa633f3683a78d270b9713
 0x53b71178636a13fb94a01f778f79421f8478dc5d24c66f5314f238a26bcda6fa
 ```
+
+Bought tokens
+```bash
+Bought properties: 
+0xc5b0fc0ee5b6458be882c6eea668ea0f16d6d18dfb5a3fbbbc8e904c8d80d48c
+0x6c9b24a55f426f272325def3a1d50f918ac26e5315f098cc0753106a85e711c9
+0x31629094495c5cf72b165c3a4fa47acc336d308767375a9d76ba2f493d89d861
+0xee1d1cb60ed0df680ec135ec2ed5bfaaa73f6359f8f1a7f2071ca4cfcb158994
+0x7c4b2eea2b29d3d82148fdd42d3947c063dfd2c0484abdacef283a57f354bb20
+```
+
+
+
 
 ## Testing
 
