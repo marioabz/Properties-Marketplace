@@ -3,6 +3,7 @@ pragma solidity >=0.4.21 <0.6.2;
 import './Verifier.sol';
 import './ERC721Mintable.sol';
 
+
 // TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
 contract _Verifier is Verifier {}
 
@@ -10,7 +11,8 @@ contract _Verifier is Verifier {}
 // TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
 contract SolnSquareVerifier is CustomERC721Token, _Verifier {
 
-    constructor(address _verifierAddress) CustomERC721Token("MxRE", "mre") public {
+    constructor(string memory _name, string memory _symbol) 
+    CustomERC721Token(_name, _symbol) public {
     }
     // TODO define a solutions struct that can hold an index & an address
         struct Solution {
