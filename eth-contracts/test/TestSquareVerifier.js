@@ -20,7 +20,7 @@ it('Verificating with the right proof', async () => {
     assert.equal(true, proof_result, "Verifier not working");
 })
 
-it('Verificating with the right proof', async () => {
+it('Verificating with the wrong proof', async () => {
     var verifierContract = await verifier.deployed()
     let proof_result = await verifierContract.verifyTx.call(
         proof.a,
