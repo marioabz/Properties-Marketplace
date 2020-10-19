@@ -9,11 +9,11 @@ contract _Verifier is Verifier {}
 
 
 // TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
-contract SolnSquareVerifier is CustomERC721Token {
+contract SolnSquareVerifier is ERC721Mintable {
 
     _Verifier public verifier;
 
-    constructor(address _verifier) CustomERC721Token() public {
+    constructor(address _verifier) ERC721Mintable() public {
         verifier = _Verifier(_verifier);
     }
 
