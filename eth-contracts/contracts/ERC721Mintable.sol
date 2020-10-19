@@ -543,7 +543,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
 
-contract CustomERC721Token is 
+contract ERC721Mintable is 
 ERC721Metadata('V7Depas', 'v7ds', 'https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/') {
 
     constructor() public {}
